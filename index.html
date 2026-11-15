@@ -62,6 +62,8 @@ img{max-width:100%}
 
 /* ---------- hero ---------- */
 .hero{text-align:center;padding-top:34px}
+.venue-logo{width:112px;height:112px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 16px;
+  border:3px solid var(--gold-light);box-shadow:0 10px 24px rgba(109,20,32,.25),0 0 0 6px rgba(217,180,92,.18)}
 .couple-frame{width:min(78vw,340px);margin:0 auto;border:3px solid var(--gold-light);border-radius:170px 170px 14px 14px;
   overflow:hidden;box-shadow:0 18px 40px rgba(109,20,32,.22);background:#fdf3ec}
 .couple-frame img{display:block;width:100%}
@@ -181,6 +183,7 @@ body.ur [data-i18n]{font-family:'Noto Nastaliq Urdu',serif;line-height:2}
 <div class="wrap">
   <!-- hero -->
   <div class="hero reveal">
+    <img class="venue-logo" src="goldpalm.jpg" alt="Gold Palm">
     <div class="couple-frame"><img src="petals.jpg" alt="Wedding roses"></div>
     <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
     <p class="honored" data-i18n="honored">We are honored to welcome you to the wedding ceremony of</p>
@@ -293,7 +296,7 @@ const DEFAULTS = {
      venue:"Pearl Marquee, Lahore", maps:"https://www.google.com/maps/search/?api=1&query=Pearl+Marquee+Lahore"},
     {key:"walima", icon:"🍽️", name:"Walima", dateLabel:"Monday • Feb 16", time:"7:30 PM",
      iso:"2026-02-16T19:30", desc:"Reception hosted by the groom's family. Dinner and duas.",
-     venue:"Gold Palm", img:"goldpalm.jpg", maps:"https://www.google.com/maps/search/?api=1&query=Gold+Palm+Marquee"}
+     venue:"Gold Palm", img:"", maps:"https://www.google.com/maps/search/?api=1&query=Gold+Palm+Marquee"}
   ]
 };
 const I18N = {
