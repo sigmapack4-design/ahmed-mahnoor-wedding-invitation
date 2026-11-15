@@ -181,7 +181,7 @@ body.ur [data-i18n]{font-family:'Noto Nastaliq Urdu',serif;line-height:2}
 <div class="wrap">
   <!-- hero -->
   <div class="hero reveal">
-    <div class="couple-frame"><img src="couple.jpg" alt="The couple"></div>
+    <div class="couple-frame"><img src="petals.jpg" alt="Wedding roses"></div>
     <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
     <p class="honored" data-i18n="honored">We are honored to welcome you to the wedding ceremony of</p>
     <div class="name" id="brideName">Mahnoor Fatima</div>
@@ -293,7 +293,7 @@ const DEFAULTS = {
      venue:"Pearl Marquee, Lahore", maps:"https://www.google.com/maps/search/?api=1&query=Pearl+Marquee+Lahore"},
     {key:"walima", icon:"🍽️", name:"Walima", dateLabel:"Monday • Feb 16", time:"7:30 PM",
      iso:"2026-02-16T19:30", desc:"Reception hosted by the groom's family. Dinner and duas.",
-     venue:"Royal Palm, Lahore", maps:"https://www.google.com/maps/search/?api=1&query=Royal+Palm+Lahore"}
+     venue:"Gold Palm", img:"goldpalm.jpg", maps:"https://www.google.com/maps/search/?api=1&query=Gold+Palm+Marquee"}
   ]
 };
 const I18N = {
@@ -343,7 +343,8 @@ function render(){
     '<div class="card"><div class="icon">'+e.icon+'</div><h3>'+e.name+'</h3>' +
     '<div class="when">'+e.dateLabel+' • '+e.time+'</div><p class="desc">'+e.desc+'</p></div>').join('');
   document.getElementById('venueList').innerHTML = D.events.map(e =>
-    '<div class="card"><h3>'+e.name+'</h3><div class="venue-name">'+e.venue+'</div>' +
+    '<div class="card">' + (e.img ? '<img src="'+e.img+'" alt="" style="width:100%;border-radius:12px;margin-bottom:12px">' : '') +
+    '<h3>'+e.name+'</h3><div class="venue-name">'+e.venue+'</div>' +
     '<a class="map-btn" target="_blank" rel="noopener" href="'+e.maps+'">📍 '+(lang==='ur'?I18N.ur.viewMap:I18N.en.viewMap)+'</a></div>').join('');
   tick();
 }
@@ -450,7 +451,7 @@ const FIELDS = [
   ['editPass','Owner Edit Password']
 ];
 const EV_FIELDS = [['name','Event Name'],['dateLabel','Date Label (e.g. Sunday • Feb 15)'],['time','Time'],
-  ['iso','Date+Time (YYYY-MM-DDTHH:MM)'],['desc','Description'],['venue','Venue'],['maps','Google Maps Link']];
+  ['iso','Date+Time (YYYY-MM-DDTHH:MM)'],['desc','Description'],['venue','Venue'],['img','Venue Photo (file name or URL, optional)'],['maps','Google Maps Link']];
 const editForm = document.getElementById('editForm');
 function buildEditForm(){
   let h = FIELDS.map(f => '<label>'+f[1]+'</label><input data-f="'+f[0]+'" value="'+String(D[f[0]]).replace(/"/g,'&quot;')+'">').join('');
