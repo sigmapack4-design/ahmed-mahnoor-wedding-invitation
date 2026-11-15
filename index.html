@@ -283,7 +283,7 @@ body.ur [data-i18n]{font-family:'Noto Nastaliq Urdu',serif;line-height:2}
 const DEFAULTS = {
   bride:"Mahnoor Fatima", brideParent:"D/o Mr. Tariq Mehmood",
   groom:"Ahmed Raza", groomParent:"S/o Mr. Muhammad Raza",
-  initials:"A & M", rsvpNumber:"",
+  initials:"A & M", rsvpNumber:"", editPass:"1234",
   events:[
     {key:"mehndi", icon:"🌿", name:"Mehndi", dateLabel:"Saturday • Feb 14", time:"6:00 PM",
      iso:"2026-02-14T18:00", desc:"An evening of henna, dholki and celebration with family and close friends.",
@@ -446,7 +446,8 @@ document.getElementById('rsvpForm').addEventListener('submit', e => {
 /* ---------- edit system ---------- */
 const FIELDS = [
   ['bride','Bride Name'], ['brideParent','Bride Parent Line'], ['groom','Groom Name'],
-  ['groomParent','Groom Parent Line'], ['initials','Seal Initials (e.g. A & M)'], ['rsvpNumber','Your WhatsApp Number for RSVPs — leave EMPTY for no WhatsApp (92...)']
+  ['groomParent','Groom Parent Line'], ['initials','Seal Initials (e.g. A & M)'], ['rsvpNumber','Your WhatsApp Number for RSVPs — leave EMPTY for no WhatsApp (92...)'],
+  ['editPass','Owner Edit Password']
 ];
 const EV_FIELDS = [['name','Event Name'],['dateLabel','Date Label (e.g. Sunday • Feb 15)'],['time','Time'],
   ['iso','Date+Time (YYYY-MM-DDTHH:MM)'],['desc','Description'],['venue','Venue'],['maps','Google Maps Link']];
@@ -460,6 +461,9 @@ function buildEditForm(){
   editForm.innerHTML = h;
 }
 document.getElementById('editBtn').addEventListener('click', () => {
+  const p = prompt('Owner password:');
+  if(p === null) return;
+  if(p !== (D.editPass || '1234')){ alert('Wrong password'); return; }
   buildEditForm(); document.getElementById('editModal').classList.add('show');
 });
 document.getElementById('saveEdit').addEventListener('click', () => {
